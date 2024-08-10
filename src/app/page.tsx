@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { Button } from "../components/ui/button";
 import { Google, Apple } from "iconsax-react";
+import Link from "next/link";
 
 export default function Home() {
   // const router = useRouter();
@@ -22,7 +23,7 @@ export default function Home() {
 
       <div className="flex flex-row">
         <div className="h-[100vh] md:w-1/2">
-          <div className="flex flex-col flex-1 justify-between items-start self-stretch h-full pt-[100px] px-[24px] pb-[52px]">
+          <div className="flex flex-col flex-1 justify-between items-start self-stretch h-full pt-[100px] px-[24px] pb-[52px] sm:pt-[124px] sm:px-[112px] sm:pb-[100px]">
             <Image
               src="helloDesignLogo.svg"
               width={162}
@@ -37,8 +38,7 @@ export default function Home() {
                 {/* Group 1 */}
                 <div className="flex flex-col gap-8">
                   <h1
-                    className="text-slate-700 text-[44px] font-medium leading-[104%] tracking-[-2.64px] leading-trim-both text-edge-cap space"
-                    style={{ fontFamily: 'SafiroMedium' }}
+                    className="text-slate-700 text-[44px] font-medium leading-[104%] tracking-[-2.64px] leading-trim-both text-edge-cap space font-['Safiro']"
                   >
                     We give
                     <div className="flex">
@@ -52,9 +52,11 @@ export default function Home() {
 
                 {/* Group 2 */}
                 <div className="flex flex-col w-full justify-between gap-6">
-                  <Button className="flex rounded-[25px] w-full sm:w- font-['Rethink Sans'] font-normal tracking-tighter text-base py-3">
-                    Get started
-                  </Button>
+                  <Link href={'welcome'}>
+                    <Button className="flex rounded-[25px] w-full sm:w- font-['Rethink Sans'] font-normal tracking-tighter text-base py-3">
+                      Get started
+                    </Button>
+                  </Link>
                   <div className="grid">
                     <div>
                     </div>

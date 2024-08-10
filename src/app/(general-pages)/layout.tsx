@@ -1,5 +1,3 @@
-import { Navbar } from "@/src/components";
-
 export default function GeneralLayout({
   children,
 }: {
@@ -7,7 +5,6 @@ export default function GeneralLayout({
 }) {
   return (
     <>
-      <Navbar />
       {children}
     </>
   );
