@@ -5,6 +5,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel } from '@/src/compone
 import { Input } from '@/src/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/src/components/ui/select';
 import { AddCircle, Eye, EyeSlash } from 'iconsax-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -24,6 +25,20 @@ export const PersonalInfoForm = () => {
   const form = useForm<Inputs>();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [preview, setPreview] = useState<string | null>(null);
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>, field: any) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      field.onChange(e.target.files);
+
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const togglePasswordVisibility = (type: 'C' | 'P') => {
     if (type === 'P') return setShowPassword(!showPassword);
@@ -51,17 +66,28 @@ export const PersonalInfoForm = () => {
                   <FormControl className='w-[72px] h-[72px]'>
                     <div className="relative w-20 h-20 bg-slate-50 rounded-lg flex flex-col justify-center items-center cursor-pointer">
                       <label htmlFor="profilePicture" className="flex flex-col items-center justify-center w-full h-full">
-                        <AddCircle className="w-4 h-4 text-gray-400" />
-                        <span className="text-gray-400 text-[9px] mt-2">
-                          {field.value && field.value.length > 0 ? field.value[0]?.name : 'PNG or JPG'}
-                        </span>
+                        {preview ? (
+                          <Image
+                            src={preview} alt="Profile Preview"
+                            className="w-full h-full object-cover rounded-lg"
+                            width={72}
+                            height={72}
+                          />
+                        ) : (
+                          <>
+                            <AddCircle className="w-4 h-4 text-gray-400" />
+                            <span className="text-gray-400 text-[9px] mt-2">
+                              {field.value && field.value.length > 0 ? field.value[0]?.name : 'PNG or JPG'}
+                            </span>
+                          </>
+                        )}
                       </label>
                       <Input
                         id="profilePicture"
                         type="file"
                         accept=".png, .jpg"
                         className="hidden"
-                        onChange={(e) => field.onChange(e.target.files)}
+                        onChange={(e) => handleImageChange(e, field)}
                       />
                     </div>
                   </FormControl>
