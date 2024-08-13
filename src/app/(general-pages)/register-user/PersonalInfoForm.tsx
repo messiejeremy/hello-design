@@ -4,7 +4,9 @@ import { Button } from '@/src/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel } from '@/src/components/ui/form';
 import { Input } from '@/src/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/src/components/ui/select';
-import { AddCircle } from 'iconsax-react';
+import { AddCircle, Eye, EyeSlash } from 'iconsax-react';
+import Link from 'next/link';
+import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 type Inputs = {
@@ -20,6 +22,13 @@ type Inputs = {
 export const PersonalInfoForm = () => {
 
   const form = useForm<Inputs>();
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const togglePasswordVisibility = (type: 'C' | 'P') => {
+    if (type === 'P') return setShowPassword(!showPassword);
+    if (type === 'C') return setShowConfirmPassword(!showConfirmPassword);
+  };
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     console.log(data);
@@ -72,8 +81,11 @@ export const PersonalInfoForm = () => {
                   className="font-['Rethink Sans'] font-[500] text-[14px] tracking-[-0.42px] leading-5 text-slate-600 pt-1"
                   htmlFor="profilePicture"
                 >First name</FormLabel>
-                <FormControl >
-                  <Input className='mt-2' id="firstName" placeholder="First name" {...field} />
+                <FormControl>
+                  <Input
+                    id="firstName"
+                    placeholder="First name" {...field}
+                  />
                 </FormControl>
               </FormItem>
             )}
@@ -146,7 +158,19 @@ export const PersonalInfoForm = () => {
                   htmlFor="password"
                 >Password</FormLabel>
                 <FormControl>
-                  <Input id="password" type="password" placeholder="Password" {...field} />
+                  <div className="relative">
+                    <Input
+                      id="password"
+                      type={showPassword ? 'text' : 'password'}
+                      placeholder="Password" {...field}
+                      className="pr-10"
+                    />
+                    <div className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer" onClick={() => togglePasswordVisibility('P')}>
+                      {showPassword
+                        ? <EyeSlash color={"#9CA3AF"} size={16} />
+                        : <Eye color={"#9CA3AF"} size={16} />}
+                    </div>
+                  </div>
                 </FormControl>
               </FormItem>
             )}
@@ -160,15 +184,32 @@ export const PersonalInfoForm = () => {
                 <FormLabel
                   className="font-['Rethink Sans'] font-[500] text-[14px] tracking-[-0.42px] leading-5 text-slate-600"
                   htmlFor="confirmPassword"
-                >Confirm Password</FormLabel>
+                >
+                  Confirm Password
+                </FormLabel>
                 <FormControl>
-                  <Input id="confirmPassword" type="password" placeholder="Confirm Password" {...field} />
+                  <div className="relative">
+                    <Input
+                      id="confirmPassword"
+                      type={showConfirmPassword ? 'text' : 'password'}
+                      placeholder="Confirm Password" {...field}
+                      className="pr-10"
+                    />
+                    <div className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer" onClick={() => togglePasswordVisibility('C')}>
+                      {showConfirmPassword
+                        ? <EyeSlash color={"#9CA3AF"} size={16} />
+                        : <Eye color={"#9CA3AF"} size={16} />}
+                    </div>
+                  </div>
                 </FormControl>
               </FormItem>
             )}
           />
 
-          <Button type="submit" className="col-span-12 sm:col-start-10 sm:col-end-13">Continue</Button>
+
+          <Link className="flex justify-end col-span-12" href={'register-company'}>
+            <Button type="submit" className="rounded-[200px] px-4 py-2 sm:w-max">Continue</Button>
+          </Link>
         </form>
       </Form>
     </>

@@ -34,7 +34,7 @@ export default function Home() {
 
             <div className="flex flex-col gap-2">
 
-              <div className="flex flex-col gap-10">
+              <div className="flex flex-col gap-8">
                 {/* Group 1 */}
                 <div className="flex flex-col gap-8">
                   <h1
@@ -51,37 +51,39 @@ export default function Home() {
                 </div>
 
                 {/* Group 2 */}
-                <div className="flex flex-col w-full justify-between gap-6">
-                  <Link href={'welcome'}>
-                    <Button className="flex rounded-[25px] w-full sm:w- font-['Rethink Sans'] font-normal tracking-tighter text-base py-3">
+                <div className="flex flex-col sm:flex-row w-full sm:w-max justify-between gap-6 font-['Rethink Sans']">
+                  <Link href={'register-user'}>
+                    <Button className="flex rounded-[25px] w-full sm:w- font-['Rethink Sans'] font-medium tracking-tighter text-base py-6 px-6">
                       Get started
                     </Button>
                   </Link>
                   <div className="grid">
-                    <div>
-                    </div>
-                    <div className="divider font-['Rethink Sans'] font-[400px] text-[12px] tracking-tighter leading-5 text-gray-500">
-                      Or continue with
+                    <div className="divider flex justify-center items-center font-['Rethink Sans'] font-[400px] text-[12px] tracking-tighter leading-5 text-gray-500 ">
+                      <span className="text-[14px] font-normal tracking-[-0.28px] leading-6">Or</span>
+                      <span className="block sm:hidden">{' '}</span>
+                      <span className="block sm:hidden">continue with</span>
                     </div>
                   </div>
                   <div className="flex flex-row justify-between w-full gap-3">
-                    <Button variant="outline" className="flex flex-1 rounded-[47px] border-gray-300 py-3 px-6">
+                    <Button variant="outline" className="flex flex-1 rounded-[47px] sm:rounded-full border-gray-300 py-3 px-6 sm:px-3 sm:py-[22px]">
                       <Image
-                        className="mr-2"
+                        className="mr-2 sm:mr-0"
                         src="googleVector.svg"
                         width={22.8}
                         height={22.8}
                         alt="Google icon"
-                      /> Google
+                      />
+                      <span className="sm:hidden">Google</span>
                     </Button>
-                    <Button variant="outline" className="flex flex-1 rounded-[47px] border-gray-300 py-3 px-6">
+                    <Button variant="outline" className="flex flex-1 rounded-[47px] border-gray-300 py-3 px-6 sm:px-3 sm:py-[22px]">
                       <Image
-                        className="mr-2"
+                        className="mr-2 sm:mr-0"
                         src="appleVector.svg"
                         width={22.8}
                         height={22.8}
                         alt="Apple icon"
-                      /> Apple
+                      />
+                      <span className="sm:hidden">Apple</span>
                     </Button>
                   </div>
                 </div>
@@ -94,7 +96,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hidden md:flex flex-col justify-center items-center self-stretch bg-slate-400 pt-24 pb-24 flex-1 h-[100vh]">
+        <div className="hidden md:flex flex-col justify-center items-center self-stretch bg-slate-300/60 pt-24 pb-24 flex-1 h-[100vh]">
         </div>
       </div>
     </div>

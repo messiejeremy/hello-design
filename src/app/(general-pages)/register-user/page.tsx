@@ -1,13 +1,14 @@
 import { ArrowLeft2 } from "iconsax-react";
 import { PersonalInfoForm } from "./PersonalInfoForm";
 import Link from "next/link";
+import { ProfileCard } from './ProfileCard';
 
 export const metadata = {
-  title: "Welcome",
-  description: "This is a page Welcome",
+  title: "Register User",
+  description: "This is a page Register User",
 };
 
-export default function WelcomePage() {
+export default function RegisterUserPage() {
 
   return (
     <>
@@ -45,7 +46,8 @@ export default function WelcomePage() {
             <PersonalInfoForm />
           </div>
         </div>
-        <div className="hidden sm:flex flex-col justify-center items-center self-stretch bg-slate-400 pt-24 pb-24 flex-1 h-[100vh]">
+        <div className="hidden sm:flex flex-col justify-center items-center self-stretch bg-slate-300/60 flex-1 h-[100vh]">
+          <ProfileCard />
         </div>
       </div>
     </>
