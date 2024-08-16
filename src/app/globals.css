@@ -6,6 +6,12 @@
 
 
 @layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
@@ -62,6 +68,7 @@
   }
 }
 
+/* Fonts */
 @font-face {
   font-family: 'Safiro';
   src: url('/fonts/Safiro-Medium.otf') format('opentype');
@@ -76,28 +83,13 @@
   font-style: normal;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-
+/* General styles */
 .leading-trim-both {
   leading-trim: both;
 }
 
 .text-edge-cap {
   text-edge: cap;
-}
-
-
-
-/* HomePage */
-.bg-primary-gradient {
-  background: linear-gradient(145deg, #89617D 0.61%, #F2514A 33.54%, #E588A4 66.46%, #9E5FDE 99.39%);
 }
 
 .divider {

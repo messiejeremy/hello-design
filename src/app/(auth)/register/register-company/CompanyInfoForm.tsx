@@ -124,7 +124,7 @@ export const CompanyInfoForm = () => {
             )}
           />
 
-          <Link className="flex justify-end col-span-12" href={'register-company'}>
+          <Link className="flex justify-end col-span-12" href={'/register/register-company'}>
             <Button type="submit" className="rounded-[200px] px-4 py-2 sm:w-max">Continue</Button>
           </Link>
         </form>

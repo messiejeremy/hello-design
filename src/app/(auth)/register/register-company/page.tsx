@@ -28,7 +28,7 @@ export default function RegisterCompanyPage() {
           </div>
           <div className="flex flex-col flex-1 justify-between items-start self-stretch pt-[48px] px-[24px] pb-[52px] sm:p-0">
             <div className="flex flex-col">
-              <Link href={'/register-user'}>
+              <Link href={'/register/register-user'}>
                 <span
                   className="font-['Rethink Sans'] font-normal text-[12px] tracking-tighter leading-5 text-gray-400 flex items-center gap-1 pb-6 cursor-pointer"
                 >
