@@ -1,12 +1,9 @@
 // 1. External modules
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 
 // 2. Internal components
 import { Providers } from '../store/Providers';
 import './globals.css';
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Hello Design",
@@ -21,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className="rethink-sans-serif">
         <Providers>
           {children}
         </Providers>

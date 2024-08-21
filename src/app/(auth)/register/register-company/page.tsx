@@ -19,9 +19,9 @@ export default function RegisterCompanyPage() {
 
               </div>
               <div>
-                <span className="font-['Rethink Sans'] font-normal text-[12px] tracking-tighter leading-5 text-gray-800 flex items-center"
+                <span className="font-normal text-[12px] tracking-tighter leading-5 text-gray-800 flex items-center"
                 >.......</span>
-                <span className="font-['Rethink Sans'] font-normal text-[12px] tracking-tighter leading-5 text-gray-800 flex items-center"
+                <span className="font-normal text-[12px] tracking-tighter leading-5 text-gray-800 flex items-center"
                 >.......</span>
               </div>
             </div>
@@ -30,16 +30,16 @@ export default function RegisterCompanyPage() {
             <div className="flex flex-col">
               <Link href={'/register/register-user'}>
                 <span
-                  className="font-['Rethink Sans'] font-normal text-[12px] tracking-tighter leading-5 text-gray-400 flex items-center gap-1 pb-6 cursor-pointer"
+                  className="font-normal text-[12px] tracking-tighter leading-5 text-gray-400 flex items-center gap-1 pb-6 cursor-pointer"
                 >
                   <ArrowLeft2 className="w-3" />
                   Volver
                 </span>
               </Link>
               <h2
-                className="text-slate-700 text-3xl font-medium leading-[104%] tracking-[-2.64px] leading-trim-both text-edge-cap space font-['Safiro'] pb-4"
+                className="text-slate-700 text-3xl font-medium leading-[104%] tracking-[-1.12px] leading-trim-both text-edge-cap space font-['Safiro'] pb-4"
               >Company info</h2>
-              <h3 className="font-['Rethink Sans'] font-normal text-[16px] tracking-tighter leading-5 text-gray-500 flex items-center gap-1 pb-6"
+              <h3 className=" font-normal text-[16px] tracking-[-0.64px] leading-5 text-gray-500 flex items-center gap-1 pb-6"
               >Here are the details of your company or project.</h3>
             </div>
             <CompanyInfoForm />

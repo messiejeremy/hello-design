@@ -72,9 +72,9 @@ export const PersonalInfoForm = () => {
   // Function to handle form submission
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     console.log(data);
-  }
+  };
 
-  console.log(form)
+  console.log(form);
 
   return (
     <>
@@ -86,13 +86,15 @@ export const PersonalInfoForm = () => {
             render={({ field }) => (
               <FormItem className="col-span-12">
                 <FormLabel
-                  className="font-['Rethink Sans'] font-[500] text-[14px] tracking-[-0.42px] leading-5 text-slate-600"
+                  className=" font-[500] text-[14px] tracking-[-0.42px] leading-5 text-slate-600"
                   htmlFor="profilePicture"
                 >Profile picture</FormLabel>
                 <div className='flex flex-1 gap-4 items-center'>
                   <FormControl className='w-[72px] h-[72px]'>
                     <div className="relative w-20 h-20 bg-slate-50 rounded-lg flex flex-col justify-center items-center cursor-pointer">
-                      <label htmlFor="profilePicture" className="flex flex-col items-center justify-center w-full h-full">
+                      <label
+                        className="flex flex-col items-center justify-center w-full h-full"
+                      >
                         {preview ? (
                           <Image
                             src={preview} alt="Profile Preview"
@@ -121,9 +123,11 @@ export const PersonalInfoForm = () => {
                   />
                   <Button
                     onClick={handleButtonClick}
-                    className="bg-gray-100 rounded-[200px] text-[14px] font-['Rethink Sans'] tracking-[-0.28px] leading-5 text-gray-700"
+                    className="bg-gray-100 rounded-[200px] text-[14px] tracking-[-0.28px] leading-5 text-gray-700"
                     variant="outline"
-                  >Upload photo</Button>
+                  >
+                    Upload photo
+                  </Button>
                 </div>
               </FormItem>
             )}
@@ -136,8 +140,8 @@ export const PersonalInfoForm = () => {
             render={({ field }) => (
               <FormItem className='col-span-12 sm:col-span-6'>
                 <FormLabel
-                  className="font-['Rethink Sans'] font-[500] text-[14px] tracking-[-0.42px] leading-5 text-slate-600 pt-1"
-                  htmlFor="profilePicture"
+                  className=" font-[500] text-[14px] tracking-[-0.42px] leading-5 text-slate-600 pt-1"
+                  htmlFor="firstName"
                 >First name</FormLabel>
                 <FormControl>
                   <Input
@@ -160,7 +164,7 @@ export const PersonalInfoForm = () => {
             render={({ field }) => (
               <FormItem className='col-span-12 sm:col-span-6'>
                 <FormLabel
-                  className="font-['Rethink Sans'] font-[500] text-[14px] tracking-[-0.42px] leading-5 text-slate-600"
+                  className=" font-[500] text-[14px] tracking-[-0.42px] leading-5 text-slate-600"
                   htmlFor="lastName"
                 >Last name</FormLabel>
                 <FormControl>
@@ -184,7 +188,7 @@ export const PersonalInfoForm = () => {
             render={({ field }) => (
               <FormItem className='col-span-12 sm:col-span-6'>
                 <FormLabel
-                  className="font-['Rethink Sans'] rounded-[10px] font-[500] text-[14px] tracking-[-0.42px] leading-5 text-slate-600"
+                  className=" rounded-[10px] font-[500] text-[14px] tracking-[-0.42px] leading-5 text-slate-600"
                   htmlFor="role"
                 >Role</FormLabel>
                 <FormControl>
@@ -193,10 +197,10 @@ export const PersonalInfoForm = () => {
                     onValueChange={(value) => {
                       field.onChange(value);
                       dispatch(updateRole(value));
-                      }}
+                    }}
                   >
                     <SelectTrigger
-                      className="font-['Rethink Sans'] rounded-[10px]"
+                      className="rounded-[10px]"
                       style={{ marginTop: "0.25rem" }}
                     >
                       <SelectValue placeholder="Role" />
@@ -218,7 +222,7 @@ export const PersonalInfoForm = () => {
             render={({ field }) => (
               <FormItem className='col-span-12 sm:col-span-6'>
                 <FormLabel
-                  className="font-['Rethink Sans'] font-[500] text-[14px] tracking-[-0.42px] leading-5 text-slate-600"
+                  className=" font-[500] text-[14px] tracking-[-0.42px] leading-5 text-slate-600"
                   htmlFor="email"
                 >Email</FormLabel>
                 <FormControl>
@@ -243,7 +247,7 @@ export const PersonalInfoForm = () => {
             render={({ field }) => (
               <FormItem className='col-span-12 sm:col-span-6'>
                 <FormLabel
-                  className="font-['Rethink Sans'] font-[500] text-[14px] tracking-[-0.42px] leading-5 text-slate-600"
+                  className=" font-[500] text-[14px] tracking-[-0.42px] leading-5 text-slate-600"
                   htmlFor="password"
                 >Password</FormLabel>
                 <FormControl>
@@ -271,7 +275,7 @@ export const PersonalInfoForm = () => {
             render={({ field }) => (
               <FormItem className='col-span-12 sm:col-span-6'>
                 <FormLabel
-                  className="font-['Rethink Sans'] font-[500] text-[14px] tracking-[-0.42px] leading-5 text-slate-600"
+                  className=" font-[500] text-[14px] tracking-[-0.42px] leading-5 text-slate-600"
                   htmlFor="confirmPassword"
                 >
                   Confirm Password

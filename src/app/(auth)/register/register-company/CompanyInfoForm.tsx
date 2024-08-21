@@ -6,7 +6,7 @@ import { Input } from '@/src/components/ui/input';
 import { AddCircle } from 'iconsax-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 type Inputs = {
@@ -19,6 +19,16 @@ export const CompanyInfoForm = () => {
 
   const form = useForm<Inputs>();
   const [preview, setPreview] = useState<string | null>(null);
+
+  // Setting up a reference to the file input element
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  // Function to trigger the file input click when the custom button is clicked
+  const handleButtonClick = () => {
+    if (inputRef.current) {
+      inputRef.current.click();
+    }
+  };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>, field: any) => {
     const file = e.target.files?.[0];
@@ -47,7 +57,7 @@ export const CompanyInfoForm = () => {
             render={({ field }) => (
               <FormItem className="col-span-12">
                 <FormLabel
-                  className="font-['Rethink Sans'] font-[500] text-[14px] tracking-[-0.42px] leading-5 text-slate-600"
+                  className=" font-[500] text-[14px] tracking-[-0.42px] leading-5 text-slate-600"
                   htmlFor="companyPicture"
                 >
                   Company picture
@@ -55,7 +65,7 @@ export const CompanyInfoForm = () => {
                 <div className='flex flex-1 gap-4 items-center'>
                   <FormControl className='w-[72px] h-[72px]'>
                     <div className="relative w-20 h-20 bg-slate-50 rounded-lg flex flex-col justify-center items-center cursor-pointer">
-                      <label htmlFor="companyPicture" className="flex flex-col items-center justify-center w-full h-full">
+                      <label className="flex flex-col items-center justify-center w-full h-full">
                         {preview ? (
                           <Image
                             src={preview} alt="Profile Preview"
@@ -72,16 +82,20 @@ export const CompanyInfoForm = () => {
                           </>
                         )}
                       </label>
-                      <Input
-                        id="companyPicture"
-                        type="file"
-                        accept=".png, .jpg"
-                        className="hidden"
-                        onChange={(e) => handleImageChange(e, field)}
-                      />
                     </div>
                   </FormControl>
-                  <Button className="bg-gray-100 rounded-[200px] text-[14px] font-['Rethink Sans'] tracking-[-0.28px] leading-5 text-gray-700" variant="outline">
+                  <Input
+                    ref={inputRef}
+                    id="companyPicture"
+                    type="file"
+                    accept=".png, .jpg"
+                    className="hidden"
+                    onChange={(e) => handleImageChange(e, field)}
+                  />
+                  <Button
+                    onClick={handleButtonClick}
+                    className="bg-gray-100 rounded-[200px] text-[14px] tracking-[-0.28px] leading-5 text-gray-700" variant="outline"
+                  >
                     Upload photo
                   </Button>
                 </div>
@@ -95,7 +109,7 @@ export const CompanyInfoForm = () => {
             render={({ field }) => (
               <FormItem className='col-span-12 sm:col-span-6'>
                 <FormLabel
-                  className="font-['Rethink Sans'] font-[500] text-[14px] tracking-[-0.42px] leading-5 text-slate-600 pt-1"
+                  className=" font-[500] text-[14px] tracking-[-0.42px] leading-5 text-slate-600 pt-1"
                   htmlFor="companyName"
                 >Company name</FormLabel>
                 <FormControl>
@@ -114,7 +128,7 @@ export const CompanyInfoForm = () => {
             render={({ field }) => (
               <FormItem className='col-span-12 sm:col-span-6'>
                 <FormLabel
-                  className="font-['Rethink Sans'] font-[500] text-[14px] tracking-[-0.42px] leading-5 text-slate-600"
+                  className=" font-[500] text-[14px] tracking-[-0.42px] leading-5 text-slate-600"
                   htmlFor="companySize"
                 >Company size</FormLabel>
                 <FormControl>
