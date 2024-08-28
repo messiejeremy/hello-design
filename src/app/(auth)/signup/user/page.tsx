@@ -1,13 +1,15 @@
-import { ArrowLeft2 } from "iconsax-react";
 import Link from "next/link";
-import { CompanyInfoForm } from "./CompanyInfoForm";
+import { ArrowLeft2 } from "iconsax-react";
+
+import { ProfileCard } from '@/src/components/forms/user/ProfileCard';
+import { ProfileSignupForm } from "@/src/components/forms/user/ProfileSignupForm";
 
 export const metadata = {
-  title: "Register Company",
-  description: "This is a page Register Company",
+  title: "Register User",
+  description: "This is a page Register User",
 };
 
-export default function RegisterCompanyPage() {
+export default function SignUpPage() {
 
   return (
     <>
@@ -28,7 +30,7 @@ export default function RegisterCompanyPage() {
           </div>
           <div className="flex flex-col flex-1 justify-between items-start self-stretch pt-[48px] px-[24px] pb-[52px] sm:p-0">
             <div className="flex flex-col">
-              <Link href={'/register/register-user'}>
+              <Link href={'/'}>
                 <span
                   className="font-normal text-[12px] tracking-tighter leading-5 text-gray-400 flex items-center gap-1 pb-6 cursor-pointer"
                 >
@@ -38,14 +40,15 @@ export default function RegisterCompanyPage() {
               </Link>
               <h2
                 className="text-slate-700 text-3xl font-medium leading-[104%] tracking-[-1.12px] leading-trim-both text-edge-cap space font-['Safiro'] pb-4"
-              >Company info</h2>
-              <h3 className=" font-normal text-[16px] tracking-[-0.64px] leading-5 text-gray-500 flex items-center gap-1 pb-6"
-              >Here are the details of your company or project.</h3>
+              >Your personal info</h2>
+              <h3 className="rethink-sans-serif  font-normal text-[16px] tracking-tighter leading-5 text-gray-500 flex items-center gap-1 pb-6"
+              >Your personal data and how your profile will be viewed.</h3>
             </div>
-            <CompanyInfoForm />
+            <ProfileSignupForm />
           </div>
         </div>
-        <div className="hidden sm:flex flex-col justify-center items-center self-stretch bg-slate-300/60 pt-24 pb-24 flex-1 h-[100vh]">
+        <div className="hidden sm:flex flex-col justify-center items-center self-stretch bg-slate-300/60 flex-1 h-[100vh]">
+          <ProfileCard />
         </div>
       </div>
     </>
