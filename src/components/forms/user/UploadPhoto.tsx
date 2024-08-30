@@ -48,7 +48,12 @@ export const UploadPhoto = () => {
               <div className="relative w-20 h-20 bg-slate-50 rounded-lg flex flex-col justify-center items-center cursor-pointer">
                 <label className="flex flex-col items-center justify-center w-full h-full">
                   {field.value?.[0] ? (
-                    <Image src={URL.createObjectURL(field.value[0])} alt="Profile Preview" className="w-full h-full object-cover rounded-lg" width={72} height={72} />
+                    <Image
+                      src={URL.createObjectURL(field.value[0])}
+                      alt="Profile Preview"
+                      className="w-full h-full object-cover rounded-lg"
+                      width={72}
+                      height={72} />
                   ) : (
                     <>
                       <AddCircle className="w-4 h-4 text-gray-400" />

@@ -17,8 +17,8 @@ export const ProfileCard = () => {
             ? <Image
               className="rounded-full h-36 w-36"
               src={user.photo}
-              width={0}
-              height={0}
+              width={36}
+              height={36}
               alt="user photo"
             />
             : <Skeleton className="bg-gray-200 rounded-full h-36 w-36" />

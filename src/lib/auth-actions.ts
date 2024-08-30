@@ -1,17 +1,8 @@
-"use server";
+"use server"
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-
 import { createClient } from "@/src/utils/supabase/server";
-
-interface SignupData {
-  email: string;
-  password: string;
-  firstName: string;
-  lastName: string;
-  avatar_url?: string; // Opcional porque puede ser null
-}
 
 export async function login(formData: FormData) {
   const supabase = createClient();
@@ -29,14 +20,15 @@ export async function login(formData: FormData) {
     redirect("/error");
   }
 
-  revalidatePath("/", "layout");
+  // revalidatePath("/", "layout");
   redirect("/");
 }
 
 export async function signup(formData: FormData) {
-  console.log("SIGNUP");
-  console.log(formData);
   const supabase = createClient();
+
+  console.log("SIGNUP");
+  console.log("SIGNUP");
 
   // type-casting here for convenience
   // in practice, you should validate your inputs
@@ -47,11 +39,17 @@ export async function signup(formData: FormData) {
   const password = formData.get("password") as string;
   const role = formData.get("role") as string;
 
-  // Manejo del avatar_url si existe
-  let avatarUrl = null;
+  // Handling avatar_url if it exists
+  let avatarUrl: string | null = null;
   const file = formData.get("profilePicture") as File;
+
   if (file) {
     avatarUrl = await uploadImage(file);
+    if (!avatarUrl) {
+      console.error("Failed to upload avatar");
+      // Handle the case when the avatar upload fails
+      // e.g., return an error response or notify the user
+    }
   }
 
   // Construction of the object for the signUp
@@ -68,6 +66,8 @@ export async function signup(formData: FormData) {
     },
   };
 
+  console.log(data);
+
   const { data: userData, error } = await supabase.auth.signUp(data);
   console.error(error);
   console.error(userData);
@@ -77,13 +77,15 @@ export async function signup(formData: FormData) {
     // redirect("/error");
   }
 
-  revalidatePath("/signup/company", "layout");
-  redirect('/signup/company');
+  console.log("User signed up:", userData);
+  // revalidatePath("/", "layout");
+  // redirect('/signup/company');
 }
 
 // Ejemplo de función para subir la imagen
 export async function uploadImage(file: File): Promise<string | null> {
   const supabase = createClient();
+
   const { data, error } = await supabase.storage
     .from('avatars')
     .upload(`public/${Date.now()}_${file.name}`, file);
@@ -93,18 +95,17 @@ export async function uploadImage(file: File): Promise<string | null> {
     return null;
   }
 
-  // Obtener la URL pública de la imagen subida
-  const { publicUrl } = supabase
+  const { data: publicUrlData } = supabase
     .storage
     .from('avatars')
-    .getPublicUrl(data.path)
-    .data;
+    .getPublicUrl(data.path);
 
-  return publicUrl || null;
+  return publicUrlData?.publicUrl || null;
 }
 
 export async function signout() {
   const supabase = createClient();
+
   const { error } = await supabase.auth.signOut();
   if (error) {
     console.log(error);
@@ -116,6 +117,7 @@ export async function signout() {
 
 export async function signInWithGoogle() {
   const supabase = createClient();
+
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {

@@ -4,6 +4,10 @@ import { type NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/src/utils/supabase/server'
 
 export async function GET(request: NextRequest) {
+
+  console.log("que=");
+
+
   const { searchParams } = new URL(request.url)
   const token_hash = searchParams.get('token_hash')
   const type = searchParams.get('type') as EmailOtpType | null
@@ -22,6 +26,7 @@ export async function GET(request: NextRequest) {
       token_hash,
     })
     if (!error) {
+      console.log(error);
       redirectTo.searchParams.delete('next')
       return NextResponse.redirect(redirectTo)
     }

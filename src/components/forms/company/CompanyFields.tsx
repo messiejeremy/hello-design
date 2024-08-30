@@ -14,11 +14,21 @@ export const CompanyFields = () => {
         )}
       />
 
-      <FormField name="companySize" render={({ field }) => (
+      <FormField name="companyAddress" render={({ field }) => (
           <FormItem className='col-span-12 sm:col-span-6'>
-            <FormLabel htmlFor="companySize">Company size</FormLabel>
+            <FormLabel htmlFor="companyAddress">Company Address</FormLabel>
             <FormControl>
-              <Input id="companySize" placeholder="Company size" {...field} />
+              <Input id="companyAddress" placeholder="Company address" {...field} />
+            </FormControl>
+          </FormItem>
+        )}
+      />
+
+      <FormField name="companyPhone" render={({ field }) => (
+          <FormItem className='col-span-12 sm:col-span-6'>
+            <FormLabel htmlFor="companyPhone">Company phone</FormLabel>
+            <FormControl>
+              <Input type='number' id="companyPhone" placeholder="Company phone" {...field} />
             </FormControl>
           </FormItem>
         )}

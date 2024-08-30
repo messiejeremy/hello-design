@@ -5,10 +5,10 @@ import { ProfileSignupFields } from './ProfileSignupFields';
 import { UploadPhoto } from './UploadPhoto';
 import { useSignup } from '@/src/hooks/formsSubmit/useSignup';
 import { Button } from '../../ui/button';
-import { Inputs } from '@/src/types/formTypes';
+import { IUser } from '@/src/types/formTypes';
 
 export const ProfileSignupForm = () => {
-  const formMethods = useForm<Inputs>({
+  const formMethods = useForm<IUser>({
     defaultValues: {
       profilePicture: null,
       firstName: '',

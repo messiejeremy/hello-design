@@ -1,5 +1,7 @@
-export type CompanyInputs = {
-  companyPicture: FileList | null;
+export type Company = {
+  // companyPicture: FileList | null;
+  // companySize: string
   companyName: string
-  companySize: string
+  companyAddress: string
+  companyPhone: number
 }

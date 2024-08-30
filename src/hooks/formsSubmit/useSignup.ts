@@ -1,9 +1,9 @@
 import { signup } from '@/src/lib/auth-actions';
-import { Inputs } from '../../types/formTypes';
+import { IUser } from '../../types/formTypes';
 
 export const useSignup = () => {
 
-  const onSubmit = async (data: Inputs) => {
+  const onSubmit = async (data: IUser) => {
     console.log("Form submitted:", data);
 
     const formData = new FormData();
@@ -11,6 +11,7 @@ export const useSignup = () => {
     formData.append("lastName", data.lastName);
     formData.append("email", data.email);
     formData.append("password", data.password);
+    formData.append("role", data.role);
     if (data.profilePicture && data.profilePicture[0]) {
       formData.append("profilePicture", data.profilePicture[0]);
     }

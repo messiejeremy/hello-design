@@ -1,4 +1,4 @@
-export interface Inputs {
+export interface IUser {
   profilePicture: FileList | null;
   firstName: string;
   lastName: string;
