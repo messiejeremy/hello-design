@@ -49,10 +49,11 @@ export const UploadPhoto = () => {
                 <label className="flex flex-col items-center justify-center w-full h-full">
                   {field.value?.[0] ? (
                     <Image
-                      src={URL.createObjectURL(field.value[0])} alt="Profile Preview"
-                      className="w-full h-full object-cover rounded-lg"
                       width={72}
                       height={72}
+                      src={URL.createObjectURL(field.value[0])}
+                      alt="Profile Preview"
+                      className="w-full h-full object-cover rounded-lg"
                     />
                   ) : (
                     <>

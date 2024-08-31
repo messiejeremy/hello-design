@@ -53,7 +53,8 @@ export const UploadPhoto = () => {
                       alt="Profile Preview"
                       className="w-full h-full object-cover rounded-lg"
                       width={72}
-                      height={72} />
+                      height={72}
+                    />
                   ) : (
                     <>
                       <AddCircle className="w-4 h-4 text-gray-400" />

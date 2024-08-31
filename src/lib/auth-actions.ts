@@ -27,11 +27,6 @@ export async function login(formData: FormData) {
 export async function signup(formData: FormData) {
   const supabase = createClient();
 
-  console.log("SIGNUP");
-  console.log("SIGNUP");
-
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
   // Extraction of data from the form
   const firstName = formData.get("firstName") as string;
   const lastName = formData.get("lastName") as string;
@@ -61,7 +56,7 @@ export async function signup(formData: FormData) {
         full_name: `${firstName} ${lastName}`,
         email: email,
         avatar_url: avatarUrl,
-        role,   // Include avatar_url if available
+        role,
       },
     },
   };
@@ -74,12 +69,12 @@ export async function signup(formData: FormData) {
 
   if (error) {
     console.error(error);
-    // redirect("/error");
+    redirect("/error");
   }
 
   console.log("User signed up:", userData);
-  // revalidatePath("/", "layout");
-  // redirect('/signup/company');
+  revalidatePath("/signup/company", "layout");
+  redirect('/signup/company');
 }
 
 // Ejemplo de función para subir la imagen

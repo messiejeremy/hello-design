@@ -9,23 +9,23 @@ import { Form } from "@/src/components/ui/form";
 import useCompanyApi from "@/src/hooks/apis/useCompanyApi";
 
 export const CompanyForm = () => {
-  const form = useForm<Company>({
+  const formCompany = useForm<Company>({
     defaultValues: {
     companyName: '',
     companyAddress: '',
-    companyPhone: NaN,
+    companyPhone: undefined,
   }});
   const { onSubmit } = useCompanyApi();
 
   return (
     <>
-      <Form {...form}>
+      <Form {...formCompany}>
         <form
-          onSubmit={form.handleSubmit(onSubmit)}
+          onSubmit={formCompany.handleSubmit(onSubmit)}
           className="grid grid-cols-12 gap-4 gap-y-7 w-full"
         >
           {/* <UploadPhoto /> */}
-          <CompanyFields />
+          <CompanyFields control={formCompany.control} />
 
           <Button
             type="submit"

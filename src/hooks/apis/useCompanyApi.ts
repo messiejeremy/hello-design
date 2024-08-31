@@ -2,24 +2,22 @@
 
 import { Company } from '@/src/types/companyTypes';
 import { createClient } from '@/src/utils/supabase/client';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 
 // create a hook useCompanyApi that insert a new company using supabase
 const useCompanyApi = () => {
-  const supabase = createClient();
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const supabase = createClient();
 
   const onSubmit = async (companyData: Company) => {
     setIsLoading(true);
     setError(null);
 
-    const supabase = createClient();
-    console.log("COMPANIESSS ADDCOMPANY");
-    console.log(companyData);
-    // Obtener la sesión del usuario autenticado
+    // Get the authenticated user's session
     const { data: { session }, error, data } = await supabase.auth.getSession();
 
     console.log(data);
@@ -50,6 +48,8 @@ const useCompanyApi = () => {
       }
 
       setIsLoading(false);
+      router.push('/dashboard');
+
       return result.data;
     } catch (error: any) {
       setIsLoading(false);

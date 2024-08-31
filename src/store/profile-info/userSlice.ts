@@ -1,15 +1,15 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-interface UserState {
+export interface IUserState {
   name: string;
   lastName: string;
   role: string;
   email: string;
-  photo: string
+  photo: string;
   isLoggedIn: boolean;
 }
 
-const initialState: UserState = {
+const initialState: IUserState = {
   name: '',
   email: '',
   photo: '',
@@ -60,6 +60,14 @@ const userSlice = createSlice({
   }
 });
 
-export const { initUserState, updateName, updateLastName, updateRole, updateEmail, updatePhoto, logout } = userSlice.actions;
+export const {
+  initUserState,
+  updateName,
+  updateLastName,
+  updateRole,
+  updateEmail,
+  updatePhoto,
+  logout
+} = userSlice.actions;
 
 export default userSlice.reducer;

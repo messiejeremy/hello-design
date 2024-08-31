@@ -30,7 +30,7 @@ export const ProfileSignupForm = () => {
         className="grid grid-cols-12 gap-4 gap-y-7 w-full"
       >
         <UploadPhoto />
-        <ProfileSignupFields />
+        <ProfileSignupFields control={formMethods.control} password={formMethods.getValues().password} />
         <Button
           type="submit"
           className="flex justify-end col-span-12 rounded-[200px] px-4 py-2 sm:w-max"
