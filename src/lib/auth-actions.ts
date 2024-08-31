@@ -73,8 +73,8 @@ export async function signup(formData: FormData) {
   }
 
   console.log("User signed up:", userData);
-  revalidatePath("/signup/company", "layout");
-  redirect('/signup/company');
+  revalidatePath("/signup/companies", "layout");
+  redirect('/signup/companies');
 }
 
 // Ejemplo de función para subir la imagen
