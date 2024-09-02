@@ -7,7 +7,7 @@ export const metadata = {
   description: "This is a page Register Company",
 };
 
-export default function RegisterCompanyPage() {
+export default function CompaniesPage() {
 
   return (
     <>
